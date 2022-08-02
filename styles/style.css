@@ -1,0 +1,12 @@
+.squares_container {
+    width: 290px;
+    height: 260px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.square {
+    width: 16px;
+    height: 16px;
+    border: black 1px solid;
+}
