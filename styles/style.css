@@ -1,6 +1,48 @@
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Just Another Hand', cursive;
+    background: #f3f3f3;
+    height: 100%;
+}
+
+#size-h3 {
+    text-align: center;
+    margin-bottom: 0;
+}
+
 .main {
     display: flex;
+    height: 100%;
+    justify-content: space-evenly;
+    align-items: center;
 }
+
+.functionality {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.slider {
+    width: 100%; /* Full-width */
+    height: 25px; /* Specified height */
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+}
+
 
 .squares-container {
     width: 600px;
@@ -9,8 +51,11 @@
     flex-wrap: wrap;
 }
 
-.square {
-    width: 14px;
-    height: 14px;
-    border: black 1px solid;
+.box-shadow {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07),
+    0 2px 4px rgba(0,0,0,0.07),
+    0 4px 8px rgba(0,0,0,0.07),
+    0 8px 16px rgba(0,0,0,0.07),
+    0 16px 32px rgba(0,0,0,0.07),
+    0 32px 64px rgba(0,0,0,0.07);
 }
