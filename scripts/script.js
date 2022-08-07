@@ -50,6 +50,12 @@ function squareListeners(squares){
     }
 }
 
+function clearCurrent(currents){
+    for (let current of currents) {
+        current.classList.remove('current');
+    }
+}
+
 
 resetButton.addEventListener('click', function () {
     clearContainer();
@@ -65,6 +71,8 @@ sizeSlider.addEventListener('input', function (){
 
 for (let color of colorButtons) {
     color.addEventListener('click', function (){
+        clearCurrent(colorButtons);
+        color.classList.add('current');
         colorValue = this.value;
     })
 }
