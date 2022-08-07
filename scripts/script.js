@@ -33,6 +33,10 @@ function createGrid(size, dimension) {
                 e.currentTarget.style.opacity = '0.8';
                 e.currentTarget.style.backgroundColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
             }
+            else {
+                e.currentTarget.style.opacity = '0.5';
+                e.currentTarget.style.backgroundColor = `#${Math.floor(Math.random() * (16724732 - 16711680 ) + 16711680).toString(16)}`;
+            }
         }, false)
         square.style.width = dimension;
         square.style.height = dimension;
