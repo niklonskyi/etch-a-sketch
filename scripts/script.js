@@ -15,14 +15,16 @@ let mouseDown = false
 document.body.onmousedown = () => (mouseDown = true)
 document.body.onmouseup = () => (mouseDown = false)
 
+sizeH3.textContent = `${size} x ${size}`;
+
 function clearContainer(){
     squareContainer.innerHTML = '';
 }
 
-function changeColor(e){
+function changeColor(e, opacity){
     if (e.type === 'mouseover' && !mouseDown) return
     if (colorValue === 'classic') {
-        e.currentTarget.style.backgroundColor = `rgba(0, 0, 0, 1)`;
+        e.currentTarget.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
     } else if (colorValue === 'colorful') {
         e.currentTarget.style.backgroundColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
     } else {
@@ -31,7 +33,6 @@ function changeColor(e){
 }
 
 function createGrid(numberOfSquares, sizeOfSquare) {
-    sizeH3.textContent = `${numberOfSquares} x ${numberOfSquares}`;
     for (let i = 0; i < numberOfSquares * numberOfSquares; i++) {
         let square = document.createElement('div');
         square.classList.add('square');
@@ -45,8 +46,14 @@ function createGrid(numberOfSquares, sizeOfSquare) {
 
 function squareListeners(squares){
     for (const square of squares) {
-        square.addEventListener('mouseover', changeColor)
-        square.addEventListener('mousedown', changeColor)
+        let opacity = 0.1;
+        square.addEventListener('mouseover', function (e) {
+            opacity += 0.1;
+            changeColor(e, opacity)
+        })
+        square.addEventListener('mousedown', function (e){
+            changeColor(e, opacity)
+        })
     }
 }
 
@@ -56,7 +63,6 @@ function clearCurrent(currents){
     }
 }
 
-
 resetButton.addEventListener('click', function () {
     clearContainer();
     createGrid(size, dimension);
@@ -64,7 +70,11 @@ resetButton.addEventListener('click', function () {
 
 sizeSlider.addEventListener('input', function (){
     size = this.value;
+    sizeH3.textContent = `${size} x ${size}`;
     dimension = `${squareContainer.clientWidth/size}px`;
+})
+
+sizeSlider.addEventListener('change', function (){
     clearContainer();
     createGrid(size, dimension);
 })
